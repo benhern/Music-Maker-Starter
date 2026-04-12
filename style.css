@@ -135,12 +135,35 @@ a:active {
   width: 80px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 10px 10px 10px rgb(0, 0, 122);
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.Key:active{
+  transform: scale(.85);
+}
+
+.Key::before{
+  content: attr(data-note);
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-size:40px;
+  background-color: black;
+  width:80px;
+  height:60px;
+  transition: all 0.5s ease-in;
+}
+
+.Key:active::before{
+  color:lightgreen;
 }
 
 
 
-
-https://prod.liveshare.vsengsaas.visualstudio.com/join?83AB5765FF017C1D798C4A257AD5DCD479A3
 
 
 
