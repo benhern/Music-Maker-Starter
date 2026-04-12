@@ -34,3 +34,21 @@ const synthPads = new Tone.MonoSynth({
 const gMajorBass = ['G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F#4', 'G4', 'A4'];
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
