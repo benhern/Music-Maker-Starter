@@ -10,34 +10,44 @@ const pianoSynth = new Tone.PolySynth(Tone.Synth, {
     type: 'triangle2',
   },
   envelope: {
-    attack: 0.002,
+    attack: 0,
     decay: 0.7,
-    sustain: 0.22,
-    release: 2.6,
+    sustain: 0.2,
+    release: 0.5,
   },
   volume: -7,
 }).connect(pianoReverb);
 
-const gMajor = ['G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F#5'];
+const gMajor = ['G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F#5', 'G5'];
 
 
 //this function creates the key through css/js
-
 function createPianoKey(note){
-const key = document.createElement("div");
-key.className = "Key"
-key.setAttribute("data-note", "test");
+  const key = document.createElement("div");
+  key.className = "Key"
+  key.setAttribute("data-note", note);
 
-return key;
+  return key;
 
 }
 
 
 export function renderKeys({container}){
-container.innerHTML = '';
-const key = createPianoKey("tesr")
+  container.innerHTML = '';
+  
 
-container.appendChild(key)
+  gMajor.forEach((note)=>{
+    const key = createPianoKey(note)
+    container.appendChild(key)
+
+    key.addEventListener('click', async () => {
+      await Tone.start();
+      pianoSynth.triggerAttackRelease(note, '4n');
+    });
+
+
+  })
+
 }
 
 

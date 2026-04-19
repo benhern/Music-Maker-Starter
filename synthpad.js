@@ -33,6 +33,31 @@ const synthPads = new Tone.MonoSynth({
 
 const gMajorBass = ['G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F#4', 'G4', 'A4'];
 
+function createSynthButton(note){
+  const button = document.createElement("div")
+  button.className = "synth-buttons"
+  button.setAttribute("data-note", note);
+  
+  return button;
+}
+
+
+export function renderSynthButton({container}){
+  container.innerHTML='';
+  
+gMajorBass.forEach((note)=>{
+  const button = createSynthButton(note)
+
+
+
+})
+
+
+
+}
+
+
+
 
 
 
