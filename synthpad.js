@@ -54,24 +54,7 @@ gMajorBass.forEach((note)=>{
 
 
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://prod.liveshare.vsengsaas.visualstudio.com/join?AB8300CF7530556DD2803F08FB1ACCB5C1B0
 
 
 
