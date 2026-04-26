@@ -164,7 +164,7 @@ a:active {
 
 /*------------*/
 
-#synth-grid{
+.synth-grid{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -221,4 +221,16 @@ a:active {
   box-shadow:
     inset 14px 14px 20px rgba(0, 0, 0, 0.16),
     inset -2px -2px 4px rgba(255, 255, 255, 0.02);
+}
+
+.String{
+  background-color:#f8bc8a;
+  width:200px;
+  height:50px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 10px 10px 10px rgb(0, 0, 122);
+  margin-left: 5px;
+  margin-right: 5px;
 }

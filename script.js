@@ -1,6 +1,6 @@
-import { renderKeys } from './piano.js';
-// import { renderSynth } from './synthpad.js';
-// import { renderStrings } from './strings.js';
+import { renderKeys} from './piano.js';
+import { renderSynthButton} from './synthpad.js';
+import { renderGuitarStrings} from './strings.js';
 
 const container = document.getElementById('instrument-container');
 const renderContext = { container };
@@ -16,6 +16,13 @@ instrumentBtns.forEach((btn) =>{
         switch(instrument){
             case "Piano": 
                 renderKeys(renderContext);
+                break;
+            case "Synth":
+                renderSynthButton(renderContext);
+                break;
+            case "String":
+                renderGuitarStrings(renderContext);
+                break;
         }
     });
 

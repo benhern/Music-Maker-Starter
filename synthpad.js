@@ -44,18 +44,19 @@ function createSynthButton(note){
 
 export function renderSynthButton({container}){
   container.innerHTML='';
+  const synthGrid = document.createElement("div")
+  synthGrid.className = "synth-grid"
   
-gMajorBass.forEach((note)=>{
-  const button = createSynthButton(note)
+  gMajorBass.forEach((note)=>{
+    const button = createSynthButton(note)
+    button.addEventListener('click', async () => {
+      await Tone.start();
+      synthPads.triggerAttackRelease(note, '4n');
+    });
+    synthGrid.appendChild(button)
+
+  });
 
 
-
-})
-
-
-
-https://prod.liveshare.vsengsaas.visualstudio.com/join?AB8300CF7530556DD2803F08FB1ACCB5C1B0
-
-
-
-
+container.appendChild(synthGrid)
+}
