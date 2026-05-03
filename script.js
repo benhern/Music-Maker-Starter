@@ -22,9 +22,13 @@ instrumentBtns.forEach((btn) =>{
                 break;
             case "String":
                 renderGuitarStrings(renderContext);
+                keyboard_play();
                 break;
         }
     });
+
+
+
 
 
 

@@ -6,10 +6,10 @@ const stringReverb = new Tone.Reverb({
 }).toDestination();
 
 const stringSynth = new Tone.PluckSynth({
-  attackNoise: 0.7,
+  attackNoise: 0.4,
   dampening: 900,
   resonance: 0.98,
-  volume: -10,
+  volume: -7,
 }).connect(stringReverb);
 
 
@@ -22,6 +22,8 @@ function createGuitarString(note){
 
   return string;
 
+  
+
 }
 
 
@@ -29,18 +31,18 @@ function createGuitarString(note){
 
 export function renderGuitarStrings({container}){
   container.innerHTML = '';
+  const guitar = document.createElement("div")
+  guitar.className = "guitar"
 
   guitarNotes.forEach((note)=>{
     const string = createGuitarString(note)
-    container.appendChild(string)
-
     string.addEventListener('click', async () =>{
       await Tone.start();
       stringSynth.triggerAttackRelease(note, '4n');
     });
-
+  guitar.appendChild(string)
 
   });
-
+container.appendChild(guitar)
 }
 

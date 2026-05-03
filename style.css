@@ -223,14 +223,35 @@ a:active {
     inset -2px -2px 4px rgba(255, 255, 255, 0.02);
 }
 
+
+.guitar{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+
 .String{
   background-color:#f8bc8a;
-  width:200px;
+  width:400px;
   height:50px;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-radius: 25px;
   transition: all 0.1s ease-in-out;
   box-shadow: 10px 10px 10px rgb(0, 0, 122);
   margin-left: 5px;
   margin-right: 5px;
+  transition: all .1s ease-in;
+}
+
+.String::before{
+  content: attr(data-note);
+  position: relative;
+  top: 30%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.String:active{
+transform: scale(.9);
 }
