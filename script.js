@@ -1,5 +1,5 @@
 import { renderKeys} from './piano.js';
-import { renderSynthButton} from './synthpad.js';
+import { renderSynthButton, keyboard_play} from './synthpad.js';
 import { renderGuitarStrings} from './strings.js';
 
 const container = document.getElementById('instrument-container');
@@ -19,10 +19,10 @@ instrumentBtns.forEach((btn) =>{
                 break;
             case "Synth":
                 renderSynthButton(renderContext);
+                keyboard_play();
                 break;
             case "String":
                 renderGuitarStrings(renderContext);
-                keyboard_play();
                 break;
         }
     });
