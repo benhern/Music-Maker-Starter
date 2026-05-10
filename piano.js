@@ -19,6 +19,7 @@ const pianoSynth = new Tone.PolySynth(Tone.Synth, {
 }).connect(pianoReverb);
 
 const gMajor = ['G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F#5', 'G5'];
+const keyboardKeys = ['1','2','3','4','5','6','7','8']
 
 //this function creates the key through css/js
 function createPianoKey(note){
@@ -48,6 +49,20 @@ export function renderKeys({container}){
   })
 
 }
+
+document.addEventListener("keydown", async (e)=>{
+  //console.log(e.key)
+  let isKeyInList = keyboardKeys.includes(e.key)
+  let key_index = 0
+  //console.log(isKeyInList)
+  if(isKeyInList === true){
+    let key_index = keyboardKeys.indexOf(e.key)
+    let note = gMajor[key_index]
+    await Tone.start();
+    pianoSynth.triggerAttackRelease(note, '4n');
+    console.log(key_index)
+  }
+})
 
 
 

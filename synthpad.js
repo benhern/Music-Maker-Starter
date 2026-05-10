@@ -32,7 +32,7 @@ const synthPads = new Tone.MonoSynth({
 }).connect(synthReverb);
 
 const gMajorBass = ['G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F#4', 'G4', 'A4'];
-const keys = ['7', '8', '9', '4', '5', '6', '1', '2', '3'];
+const keyboardKeys = ['7', '8', '9', '4', '5', '6', '1', '2', '3'];
 
 function createSynthButton(note){
   const button = document.createElement("div")
@@ -60,14 +60,17 @@ export function renderSynthButton({container}){
 container.appendChild(synthGrid)
 }
 
-export function keyboard_play(){
-  document.addEventListener("keydown",(keyboard)=>{
-    const keypressed = keyboard.key
-    if(keys.includes(keypressed)){
-      console.log(keypressed)
-    }
-  })
 
 
-}
+document.addEventListener("keydown", async (e)=>{
+  let isKeyInList = keyboardKeys.includes(e.key)
+  let key_index = 0
+  if(isKeyInList === true){
+    let key_index = keyboardKeys.indexOf(e.key)
+    let note = gMajorBass[key_index]
+    await Tone.start();
+    synthPads.triggerAttackRelease(note, '4n')
+console.log(key_index)
+  }
+})
 
