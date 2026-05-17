@@ -61,16 +61,18 @@ container.appendChild(synthGrid)
 }
 
 
+function handleKeyEvent(e){
+  document.addEventListener("keydown", async (e)=>{
+    let isKeyInList = keyboardKeys.includes(e.key)
+    let key_index = 0
+    if(isKeyInList === true){
+      let key_index = keyboardKeys.indexOf(e.key)
+      let note = gMajorBass[key_index]
+      await Tone.start();
+      synthPads.triggerAttackRelease(note, '4n')
+  console.log(key_index)
+    }
+  })
+}
 
-document.addEventListener("keydown", async (e)=>{
-  let isKeyInList = keyboardKeys.includes(e.key)
-  let key_index = 0
-  if(isKeyInList === true){
-    let key_index = keyboardKeys.indexOf(e.key)
-    let note = gMajorBass[key_index]
-    await Tone.start();
-    synthPads.triggerAttackRelease(note, '4n')
-console.log(key_index)
-  }
-})
-
+https://prod.liveshare.vsengsaas.visualstudio.com/join?16B50316FD6C030ECBF0664B425EA4322CAA
