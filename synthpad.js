@@ -33,6 +33,8 @@ const synthPads = new Tone.MonoSynth({
 
 const gMajorBass = ['G3', 'A3', 'B3', 'C4', 'D4', 'E4', 'F#4', 'G4', 'A4'];
 const keyboardKeys = ['7', '8', '9', '4', '5', '6', '1', '2', '3'];
+let keyboardListenerAttached = false;
+
 
 function createSynthButton(note){
   const button = document.createElement("div")
@@ -61,7 +63,7 @@ container.appendChild(synthGrid)
 }
 
 
-function handleKeyEvent(e){
+function handleKeydown(e){
   document.addEventListener("keydown", async (e)=>{
     let isKeyInList = keyboardKeys.includes(e.key)
     let key_index = 0
@@ -75,4 +77,17 @@ function handleKeyEvent(e){
   })
 }
 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?16B50316FD6C030ECBF0664B425EA4322CAA
+
+export function play_with_keyboard() {
+  if (keyboardListenerAttached) return;
+
+  document.addEventListener('keydown', handleKeydown);
+  keyboardListenerAttached = true;
+}
+
+export function stop_keyboard() {
+  if (!keyboardListenerAttached) return;
+
+  document.removeEventListener('keydown', handleKeydown);
+  keyboardListenerAttached = false;
+}

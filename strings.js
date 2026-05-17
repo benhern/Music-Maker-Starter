@@ -46,3 +46,25 @@ export function renderGuitarStrings({container}){
 container.appendChild(guitar)
 }
 
+
+
+
+
+
+
+
+
+
+export function play_with_keyboard() {
+  if (keyboardListenerAttached) return;
+
+  document.addEventListener('keydown', handleKeydown);
+  keyboardListenerAttached = true;
+}
+
+export function stop_keyboard() {
+  if (!keyboardListenerAttached) return;
+
+  document.removeEventListener('keydown', handleKeydown);
+  keyboardListenerAttached = false;
+}
