@@ -63,18 +63,13 @@ container.appendChild(synthGrid)
 }
 
 
-function handleKeydown(e){
-  document.addEventListener("keydown", async (e)=>{
-    let isKeyInList = keyboardKeys.includes(e.key)
-    let key_index = 0
-    if(isKeyInList === true){
-      let key_index = keyboardKeys.indexOf(e.key)
-      let note = gMajorBass[key_index]
-      await Tone.start();
-      synthPads.triggerAttackRelease(note, '4n')
-  console.log(key_index)
-    }
-  })
+async function handleKeydown(e){
+  if (keyboardKeys.includes(e.key)) {
+    await Tone.start();
+    const noteIndex = keyboardKeys.indexOf(e.key);
+    const playNote = gMajorBass[noteIndex];
+    synthPads.triggerAttackRelease(playNote, '2n');
+  }
 }
 
 

@@ -14,6 +14,8 @@ const stringSynth = new Tone.PluckSynth({
 
 
 const guitarNotes = ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'];
+const keyboardKeys = ['7', '8', '9', '4', '5', '6', '1', '2', '3'];
+let keyboardListenerAttached = false;
 
 function createGuitarString(note){
   const string = document.createElement("div");
@@ -47,12 +49,14 @@ container.appendChild(guitar)
 }
 
 
-
-
-
-
-
-
+async function handleKeydown(e){
+  if (keyboardKeys.includes(e.key)) {
+    await Tone.start();
+    const noteIndex = keyboardKeys.indexOf(e.key);
+    const playNote = guitarNotes[noteIndex];
+    stringSynth.triggerAttackRelease(playNote, '2n');
+  }
+}
 
 
 export function play_with_keyboard() {

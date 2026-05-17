@@ -50,20 +50,13 @@ export function renderKeys({container}){
 
 }
 
-function handleKeydown(){
-  document.addEventListener("keydown", async (e)=>{
-    //console.log(e.key)
-    let isKeyInList = keyboardKeys.includes(e.key)
-    let key_index = 0
-    //console.log(isKeyInList)
-    if(isKeyInList === true){
-      let key_index = keyboardKeys.indexOf(e.key)
-      let note = gMajor[key_index]
-      await Tone.start();
-      pianoSynth.triggerAttackRelease(note, '4n');
-      console.log(key_index)
-    }
-  })
+async function handleKeydown(e){
+  if (keyboardKeys.includes(e.key)) {
+    await Tone.start();
+    const noteIndex = keyboardKeys.indexOf(e.key);
+    const playNote = gMajor[noteIndex];
+    pianoSynth.triggerAttackRelease(playNote, '2n');
+  }
 }
 
 export function play_with_keyboard() {
